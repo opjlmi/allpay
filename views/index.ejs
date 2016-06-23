@@ -5,7 +5,28 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1></h1>
-    <p></p>
+    <!-- <form action="https://payment-stage.allpay.com.tw/AioHelper/GenCheckMacValue" method="post"> -->
+    <% if (key) { %>
+    <form id="form" action="https://payment-stage.allpay.com.tw/Cashier/AioCheckOut/V2" method="post">
+    <% } else { %>
+    <form action="/submit" method="post">
+    <% } %>
+        MerchantID<input type="text" name="MerchantID" value="2000132"><br>
+        MerchantTradeNo<input type="text" name="MerchantTradeNo" value="allpay1234ggggggg"><br>
+        MerchantTradeDate<input type="text" name="MerchantTradeDate" value="2012/03/21 15:40:18"><br>
+        PaymentType<input type="text" name="PaymentType" value="aio"><br>
+        TotalAmount<input type="text" name="TotalAmount" value="5000"><br>
+        TradeDesc<input type="text" name="TradeDesc" value="allpay 商城購物-"><br>
+        ItemName<input type="text" name="ItemName" value="手機 20 元 X2#隨身碟 60 元 X1"><br>
+        ReturnURL<input type="text" name="ReturnURL" value="https://putsreq.com/QbV02iCX45qjzfSLt0dz"><br>
+        ChoosePayment<input type="text" name="ChoosePayment" value="Credit"><br>
+        CheckMacValue<input type="text" name="CheckMacValue" value="<%= key %>"><br>
+        <input type="submit" value="Submit" value=""><br>
+    </form>
+    <% if (key) { %>
+    <script>
+      document.getElementById('form').submit();
+    </script>
+    <% } %>
   </body>
 </html>
